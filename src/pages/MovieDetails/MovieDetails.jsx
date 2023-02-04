@@ -57,9 +57,11 @@ export default function MovieDetails() {
   const year = release_date?.slice(0, 4);
   const movieGenres = genres?.map(genre => genre.name).join(', ');
   const userVote = Math.round(vote_average * 10);
-  const poster = poster_path
-    ? `https://image.tmdb.org/t/p/w500/${poster_path}`
-    : 'https://i.ibb.co/n6tGsmL/asdasda.jpg';
+
+  const poster =
+    poster_path !== null
+      ? `https://image.tmdb.org/t/p/w500/${poster_path}`
+      : 'https://i.ibb.co/n6tGsmL/asdasda.jpg';
 
   return (
     <main>
@@ -93,7 +95,6 @@ export default function MovieDetails() {
             <LinkItem to="reviews">Reviews</LinkItem>
           </AdditListItem>
         </AdditList>
-
         <Outlet />
       </AdditWrapper>
     </main>
